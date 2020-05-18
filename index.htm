@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title>DPProject</title>
+  <link rel="stylesheet" href="stylesheet2.css">
+  
+  <body>
+    
+    <div class="help">
+      <div class="logo">
+        <h1>I</h1>
+        <h2><span>i </span>ndent</h2>
+      </div>
+      <div class="use">
+        <div class="if">
+          <p>If your editor doesn't Auto indent</p>
+        </div>
+        <div class="u write">
+	        <img  src="https://icons-for-free.com/iconfiles/png/512/code+html+icojam+link+material+share+icon-1320184943150546794.png">
+          <p>Code here</p>
+         </div>
+        <div class="u copy">
+	        <img  src="https://icons-for-free.com/iconfiles/png/512/Copy+Paste+Move+Square-131983793504017353.png">
+          <p>Copy</p>
+        </div>
+        <div class="u paste">
+          <img  src="https://icons-for-free.com/iconfiles/png/512/duplicate+formatting+paste+icon-1320195761582794154.png">
+          <p>Paste it there</p>
+        </div>
+      </div>
+      <div class="action">
+        <div class="ob a">
+          <button class="q btn ctrl" disabled>ctrl</button>
+          
+          <button class="q btn enter" disabled >enter</button>
+          <h1 class="q plus">+</h1>
+  	      <h1 class="q colon">:</h1>
+          <p class="q direct">New indented line</p>
+        </div>
+      </div>
+      <div class="action">
+        <div class="ob b">
+          <button class="btn shift" disabled>shift</button>
+          
+          <button class="btn enter2" disabled>enter</button>
+          <h1 class="plus">+</h1>
+  	      <h1 class="colon">:</h1>
+          <p class="direct">Decrease indentation</p>
+        </div>
+      </div>
+    </div>
+    <textarea placeholder="Write your code here" id="textArea" autofocus wrap="off" > 
+       
+    </textarea> 
+      
+    <br><br> 
+  
+    <button onclick="changeContent()">indent</button> 
+    
+    <script>
+	
+      var counter=0;
+      function changeContent() { 
+        counter++;
+        var x = document.getElementById('textArea'); 
+        x.value += "\n"; 
+        var c=counter;
+        for (;c>0;c--)
+        {
+          x.value+="\t";
+        }
+        
+      } 
+      
+      function stayThere(){
+	      var d = counter;
+        var x = document.getElementById('textArea'); 
+        x.value += "\n"; 
+        for (;d>0;d--)
+        {
+          x.value+="\t";
+        }
+      }
+      
+      function doc_keyDown(e) {
+        if (e.ctrlKey && e.keyCode == 13) {
+          changeContent();
+        }
+        else if (e.keyCode == 13 && !e.shiftKey) {
+          e.preventDefault();
+	        stayThere();
+        }
+        if (e.shiftKey && e.keyCode==13){
+          e.preventDefault();
+          counter--;
+          stayThere();
+        }
+      }
+
+      document.addEventListener('keydown', doc_keyDown, false);
+        
+        
+    </script>
+  </body>
+</html>
+
+
+
+
+
